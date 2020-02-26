@@ -1,5 +1,11 @@
 defmodule FormatterIssue do
   @moduledoc """
+  The formatter treats the arity (`/2`) of a function that is piped to another
+  function as a first argument as a division operator and a value to be
+  divided. Below we have an example of the issue. The function in question is
+  the `call/1`. This is the one that gets formatted in a way that we no longer
+  can compile the code.
+
   # without piping twice:
   def call(args) do
     function_a(&@implementation.make_call/2, [args, %{}])
